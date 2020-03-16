@@ -22,5 +22,4 @@ class MapJoin extends Join[Trip, Route, RouteTrip] {
     val t: Map[String, Route] = b.map(route => route.route_id -> route).toMap
     a.filter(trip => t.contains(trip.route_id)).map(trip => RouteTrip(trip, Some(t(trip.route_id))))
   }
-
 }
