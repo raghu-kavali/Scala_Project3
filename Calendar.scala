@@ -1,29 +1,31 @@
-package mcit.scala.project
+package ca.mcit.bigdata
 
-case class Calendar(
-                     service_id: String,
-                     monday: String,
-                     tuesday: String,
-                     wednesday: String,
-                     thursday: String,
-                     friday: String,
-                     saturday: String,
-                     sunday: String,
-                     start_date: String,
-                     end_date: String
+case class Calendar(service_id: String,
+                    monday: Int,
+                    tuesday: Int ,
+                    wednesday: Int ,
+                    thursday: Int ,
+                    friday: Int ,
+                    saturday: Int ,
+                    sunday: Int ,
+                    start_date: Int ,
+                    end_date: Int
                    )
-
-object Calendar {
-  def toCsv(calendar: Calendar): String = {
-    calendar.service_id + "," +
-      calendar.monday + "," +
-      calendar.tuesday + "," +
-      calendar.wednesday + "," +
-      calendar.thursday + "," +
-      calendar.friday + "," +
-      calendar.saturday + "," +
-      calendar.sunday + "," +
-      calendar.start_date + "," +
-      calendar.end_date
+object Calendar{
+  def apply(csvLine: String): Calendar = {
+    val c = csvLine.split(",")
+    new Calendar(c(0), c(1).toInt, c(2).toInt, c(3).toInt, c(4).toInt, c(5).toInt, c(6).toInt,c(7).toInt, c(8).toInt, c(9).toInt)
+  }
+  def toCsv(calender: Calendar): String = {
+    calender.service_id + "," +
+      calender.monday + "," +
+      calender.tuesday + "," +
+      calender.wednesday + "," +
+      calender.thursday + "," +
+      calender.friday + "," +
+      calender.saturday + "," +
+      calender.sunday + "," +
+      calender.start_date + "," +
+      calender.end_date
   }
 }
